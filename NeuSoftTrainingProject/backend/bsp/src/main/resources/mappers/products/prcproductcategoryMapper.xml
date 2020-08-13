@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.mvoproduct.mapper.PrcproductcategoryMapper">
+    <select id="getPrcByProId" parameterType="int" resultType="PrcCategory">
+        select * from prc_product_category where pro_id = #{pro_id}
+    </select>
+
+    <select id="getAll" resultType="PrcCategory">
+        select * from prc_product_category
+    </select>
+
+    <update id="updateByProId">
+        update prc_product_category set category_name = #{category_name} where pro_id = #{pro_id}
+    </update>
+
+    <insert id="insertByProId" >
+        insert into prc_product_category values(null,#{pro_id},null,
+                                       null,null,null,null,null,null,null,null,null,null)
+    </insert>
+
+</mapper>

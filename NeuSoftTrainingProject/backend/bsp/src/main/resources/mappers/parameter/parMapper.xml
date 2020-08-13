@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.parameter.mapper.ParMapper">
+
+    <select id="searchAllPar" resultType="Par">
+        select * from par_parameter
+    </select>
+
+    <insert id="insertPar" parameterType="Par">
+        insert into par_parameter values (null,#{param_cd},#{param_value},#{description},#{created_by},#{creation_date},
+                                          #{last_update_by},#{last_update_date},#{call_cnt},#{remark},#{sts_cd});
+    </insert>
+
+    <update id="updatePar" parameterType="Par">
+        update par_parameter set param_cd = #{param_cd}, param_value = #{param_value}, description = #{description},
+                                 created_by = #{created_by}, creation_date = #{creation_date},
+                                 last_update_by = #{last_update_by}, last_update_date = #{last_update_date},
+                                 call_cnt = #{call_cnt}, remark = #{remark}, sts_cd = #{sts_cd}
+        where par_id = #{par_id}
+    </update>
+
+    <delete id="deletePar" parameterType="int">
+        delete from par_parameter where par_id = #{par_id}
+    </delete>
+
+    <select id="searchParByCd" resultType="Par">
+        select * from par_parameter where param_cd like #{param_cd}
+    </select>
+
+
+</mapper>

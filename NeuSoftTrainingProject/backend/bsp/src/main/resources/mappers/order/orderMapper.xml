@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.order.mapper.OrderMapper">
+
+    <select id="getSTR_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STR_ID from str_store where DSR_ID = #{DSR_ID} and STORE_NAME = #{STORE_NAME}
+    </select>
+
+    <select id="getSTO_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STO_ID from sto_store_order where STR_ID = #{STR_ID}
+    </select>
+
+    <select id="getSAO_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select SAO_ID from sao_sales_order where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getPRO_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PRO_ID from sal_sales_order_line_item where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getPRO_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select TITLE from pro_product1 where PRO_ID = #{PRO_ID}
+    </select>
+
+    <select id="getSKU_NO" parameterType="java.lang.String" resultType="java.lang.String" >
+        select SKU_NO from sol_store_order_line_item where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getSALES_PRICE" parameterType="java.lang.String" resultType="java.lang.String" >
+        select SALES_PRICE from sol_store_order_line_item where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getQTY" parameterType="java.lang.String" resultType="java.lang.String" >
+        select QTY from sol_store_order_line_item where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getTRACKING_NO" parameterType="java.lang.String" resultType="java.lang.String" >
+        select TRACKING_NO from sal_sales_order_line_item where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getWSP_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select WSP_NAME from sal_sales_order_line_item where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getPRODUCT_AMOUNT" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PRODUCT_AMOUNT from sao_sales_order where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getORDER_STS" parameterType="java.lang.String" resultType="java.lang.Integer" >
+        select ORDER_STS from sao_sales_order where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getDELIVERY_STS" parameterType="java.lang.String" resultType="java.lang.String" >
+        select DELIVERY_STS from sao_sales_order where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getFREIGHT_COST" parameterType="java.lang.String" resultType="java.lang.String" >
+        select FREIGHT_COST from sao_sales_order where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getSTO_IDBySAO_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STO_ID from sao_sales_order where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getFAMILY_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select FAMILY_NAME from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getGIVEN_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select GIVEN_NAME from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getSTATE_OR_PROVINCE_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STATE_OR_PROVINCE_NAME from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getCITY_NAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select CITY_NAME from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getCONTACT_PHONE_NO" parameterType="java.lang.String" resultType="java.lang.String" >
+        select CONTACT_PHONE_NO from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getEMAIL" parameterType="java.lang.String" resultType="java.lang.String" >
+        select EMAIL from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getADDRESS_LINE1" parameterType="java.lang.String" resultType="java.lang.String" >
+        select ADDRESS_LINE1 from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getADDRESS_LINE2" parameterType="java.lang.String" resultType="java.lang.String" >
+        select ADDRESS_LINE2 from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getADDRESS_LINE3" parameterType="java.lang.String" resultType="java.lang.String" >
+        select ADDRESS_LINE3 from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getPOSTAL_CD" parameterType="java.lang.String" resultType="java.lang.String" >
+        select POSTAL_CD from sha_shipping_address where STO_ID = #{STO_ID}
+    </select>
+
+    <select id="getUSERNAME" parameterType="java.lang.String" resultType="java.lang.String" >
+        select USERNAME from sys_user where MAN_BUYER_ID = #{MAN_BUYER_ID}
+    </select>
+
+    <select id="getPASSWORD" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PASSWORD from waa_wallet_account1 where ACCOUNT_NAME = #{ACCOUNT_NAME}
+    </select>
+
+    <update id = "updateORDER_STS" parameterType="java.lang.String">
+        update sao_sales_order set ORDER_STS = 2 where SAO_ID = #{SAO_ID}
+    </update>
+
+    <select id = "getORDER_AMOUNT" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select PRODUCT_AMOUNT from sao_sales_order where SAO_ID = #{SAO_ID}
+    </select>
+
+    <select id="getBUYER_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select BUYER_ID from waa_wallet_account1 where ACCOUNT_NAME = #{ACCOUNT_NAME}
+    </select>
+
+    <select id="getAVAILABLE_MONEY" parameterType="java.lang.String" resultType="java.lang.Integer" >
+        select AVAILABLE_MONEY from waf_wallet_account_fund1 where BUYER_ID = #{BUYER_ID}
+    </select>
+
+    <update id = "updateAVAILABLE_MONEY" parameterType="java.lang.String">
+        update waf_wallet_account_fund1 set AVAILABLE_MONEY = #{param1} where BUYER_ID = #{param2}
+    </update>
+
+</mapper>

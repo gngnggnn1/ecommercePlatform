@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.prodect.mapper.ProductMapper">
+
+    <!--<select id="getSTR_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STR_ID from str_store where DSR_ID = #{DSR_ID} and STORE_NAME = #{STORE_NAME}
+    </select>
+
+    <select id="getPRO_ID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PRO_ID from sdi_store_dropship_item where STR_ID = #{STR_ID}
+    </select>
+
+    <select id="getProductTitle" parameterType="java.lang.String" resultType="java.lang.String" >
+        select TITLE from pro_product where PRO_ID = #{PRO_ID}
+    </select>-->
+
+    <select id="getProductImgUrl" parameterType="java.lang.String" resultType="java.lang.String" >
+        select URL from img_image1 where ENTITY_ID = #{PRO_ID} and ENTITY_CD = "pro_product"
+    </select>
+
+    <select id="getProID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PRO_ID from pro_product1 where STS_CD = 'a'
+    </select>
+
+    <select id="getProductTitle" parameterType="java.lang.String" resultType="java.lang.String" >
+        select TITLE from pro_product1 where PRO_ID = #{PRO_ID}
+    </select>
+
+    <select id="getProductPrice" parameterType="java.lang.String" resultType="java.lang.String" >
+        select RETAIL_PRICE from pro_product1 where PRO_ID = #{PRO_ID}
+    </select>
+
+    <select id="getProductSku" parameterType="java.lang.String" resultType="java.lang.String" >
+        select SKU_CD from pro_product1 where PRO_ID = #{PRO_ID}
+    </select>
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.mvoorder.mapper.SalMapper">
+
+    <select id="searchSal" parameterType="int" resultType="Sal">
+        select * from sal_sales_order_line_item where sao_id = #{sao_id}
+    </select>
+
+</mapper>

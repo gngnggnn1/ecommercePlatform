@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.role.mapper.RoleMapper">
+
+    <!--<insert id="insert" parameterType="User">-->
+        <!--insert into sys_user values(#{user_id},#{username},#{password},#{name},#{rights},#{role_id},#{last_login}-->
+            <!--,#{ip},#{status},#{bz},#{skin},#{email},#{number},#{phone},#{man_buyer_id})-->
+    <!--</insert>-->
+
+    <!--<update id="update" parameterType="User">-->
+        <!--update sys_user set username = #{username},password = #{password},-->
+        <!--name= #{name} ,rights = #{rights},role_id = #{role_id}, last_login = #{last_login},ip = #{ip},status = #{status},-->
+                            <!--bz = #{bz},skin = #{skin},email = #{email},number = #{number},phone = #{phone},man_buyer_id = #{man_buyer_id}-->
+        <!--where user_id = #{user_id}-->
+    <!--</update>-->
+
+    <!--<delete id="delete" parameterType="java.lang.String">-->
+        <!--delete from sys_user where user_id = #{user_id}-->
+    <!--</delete>-->
+
+    <select id="getAll" resultType="Role">
+        select * from sys_role_table
+    </select>
+
+    <!--<select id="getById" parameterType="java.lang.String">-->
+        <!--select * from sys_user where user_id = #{userid}-->
+    <!--</select>-->
+
+    <!--<select id="getByName" parameterType="java.lang.String" resultType="User">-->
+        <!--select * from sys_user where username = #{username}-->
+    <!--</select>-->
+
+    <!--<select id="getRolesByName" parameterType="java.lang.String" resultType="java.lang.String">-->
+        <!--select a.role_id-->
+        <!--from sys_role_user_table a, sys_user b-->
+        <!--where b.username = #{username} and b.user_id = a.user_id-->
+    <!--</select>-->
+
+    <!--<select id="getAllByFilter" parameterType="java.util.Map" resultType="User">-->
+        <!--select * from sys_user where username = #{username} and password = #{password}-->
+    <!--</select>-->
+<!--    <select id="getTeachersByEmail" resultType="Teacher">-->
+<!--        select * from teacher where semail like #{semail}-->
+<!--    </select>-->
+</mapper>
+

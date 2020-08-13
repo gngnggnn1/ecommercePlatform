@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.wallet.mapper.WtaMapper">
+
+    <insert id="insertWta" parameterType="Wta" >
+        insert into wta_wallet_transaction_aduit values (null,#{buyer_id},#{transaction_id},#{available_money_before},
+                                                         #{depositing_money_before},#{withdrawing_money_before},
+                                                         #{operate_money},#{operate_type},#{available_money_after},
+                                                         #{depositing_money_after},#{withdrawing_money_after},
+                                                         #{operate_by},#{status},#{create_by},#{create_time},
+                                                         #{last_update_by},#{last_update_time})
+    </insert>
+
+    <select id="searchWtaByBuyerId" parameterType="int" resultType="Wta">
+        select * from wta_wallet_transaction_aduit where buyer_id = #{buyer_id}
+    </select>
+
+    <select id="searchAllWtaByFilter" resultType="Wta">
+        select * from wta_wallet_transaction_aduit where operate_type != 3
+    </select>
+
+    <select id="searchWtaByWtrId" parameterType="int" resultType="Wta">
+        select * from wta_wallet_transaction_aduit where transaction_id = #{transaction_id}
+    </select>
+
+    <update id="updateWtaStatus">
+        update wta_wallet_transaction_aduit set status = #{status} where transaction_id = #{transaction_id}
+    </update>
+
+</mapper>

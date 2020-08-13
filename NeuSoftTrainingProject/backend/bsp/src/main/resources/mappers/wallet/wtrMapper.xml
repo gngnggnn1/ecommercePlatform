@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.wallet.mapper.WtrMapper">
+
+    <insert id="insertWtr" parameterType="Wtr">
+        insert into wtr_wallet_transaction_record values (null,#{buyer_id},#{bank_card_id},#{transaction_number},#{transaction_type},
+                                                          #{account_name},#{transaction_money},#{commission},#{discount_commission},
+                                                          #{transaction_method},#{complete_time},#{status},#{actual_money},
+                                                          #{actual_commission},#{actual_discount_commission},#{balance},#{business_id},
+                                                          #{finance_type},#{note},#{operator_name},#{operator_ip},#{create_by},#{create_time},
+                                                          #{last_update_by},#{last_update_time},#{bank_receipt_url},#{exchange_rate},
+                                                          #{transaction_desc},#{foreign_exchange_fee},#{withdraw_fee})
+    </insert>
+
+    <select id="searchWtrByBuyerId" parameterType="int" resultType="Wtr">
+        select * from wtr_wallet_transaction_record where buyer_id = #{buyer_id}
+    </select>
+
+    <select id="searchAllWtrByFilter" resultType="Wtr">
+        select * from wtr_wallet_transaction_record where transaction_type != 3
+    </select>
+
+    <select id="searchWtrById" parameterType="int" resultType="Wtr">
+        select * from wtr_wallet_transaction_record where transaction_id = #{transaction_id}
+    </select>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(transaction_id) from wtr_wallet_transaction_record
+    </select>
+
+    <update id="updateWtrStatus">
+        update wtr_wallet_transaction_record set status = #{status} where transaction_id = #{transaction_id}
+    </update>
+
+
+
+</mapper>

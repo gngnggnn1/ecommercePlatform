@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.menu.mapper.MenuMapper">
+
+
+    <select id="getAuthMenu" parameterType="java.lang.String" resultType="Menu">
+        select menu_id, menu_name, menu_url, parent_id, menu_order, menu_icon, menu_type, menu_hidden
+        from sys_user a, sys_role_user_table b, sys_role_frontend_menu_table c, sys_menu d
+        where a.user_id = b.user_id and b.role_id = c.role_id and c.frontend_menu_id = d.menu_id
+        and a.username = #{username}
+    </select>
+
+    <select id="getById" parameterType="java.lang.String" resultType="Menu">
+        select * from sys_menu where menu_id = #{menuid}
+    </select>
+
+    <select id="getAllFather" resultType="Menu">
+        select * from sys_menu where menu_url = "#"
+    </select>
+
+    <select id="getMenuByRoleId" parameterType="java.lang.String" resultType="Menu">
+        select menu_id, menu_name
+        from sys_menu a, sys_role_frontend_menu_table b
+        where a.menu_id = b.frontend_menu_id and b.role_id = #{id} and a.menu_url = "#"
+    </select>
+
+    <select id="getByUrlAndName" parameterType="java.lang.String" resultType="Menu">
+        select * from sys_menu where menu_url = #{url} and menu_name = #{name}
+    </select>
+
+    <select id="getAll" resultType="Menu">
+--         select distinct menu_id, menu_name, menu_url, parent_id, menu_order, menu_icon, menu_type, menu_hidden
+--         from sys_user a, sys_role_user_table b, sys_role_frontend_menu_table c, sys_menu d
+--         where a.user_id = b.user_id and b.role_id = c.role_id and c.frontend_menu_id = d.menu_id
+      select * from sys_menu
+    </select>
+
+    <delete id="deleteByUrl" parameterType="java.lang.String">
+        delete from sys_menu where menu_url = #{url}
+    </delete>
+
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete from sys_menu where menu_id = #{id}
+    </delete>
+
+    <delete id="deleteAuthByRoleId" parameterType="java.lang.String">
+        delete from sys_role_frontend_menu_table where role_id = #{id}
+    </delete>
+
+    <delete id="deleteByParentId" parameterType="java.lang.String">
+        delete from sys_menu where parent_id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="Menu">
+        update sys_menu set menu_name = #{menu_name},menu_icon = #{menu_icon},
+                            menu_order= #{menu_order} ,menu_url = #{menu_url}
+        where menu_id = #{menu_id}
+    </update>
+
+    <insert id="insert">
+        insert into sys_role_frontend_menu_table values(null, #{role_id}, #{frontend_menu_id})
+    </insert>
+
+    <insert id="addMenu" parameterType="Menu">
+        insert into sys_menu values(null, #{menu_name}, #{menu_url}, #{parent_id}, #{menu_order}, #{menu_icon}, #{menu_type}, #{menu_hidden})
+    </insert>
+
+    <select id="getByParentId" resultType="Menu">
+        select * from sys_menu where parent_id = #{parent_id}
+    </select>
+
+</mapper>
+

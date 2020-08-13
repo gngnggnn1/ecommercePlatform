@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.mvoproduct.mapper.ImgImageMapper">
+    <select id="searchImg" parameterType="int" resultType="ImgImage">
+        select * from img_image where entity_id = #{pro_id} and entity_cd = 'pro'
+    </select>
+
+    <insert id="insertUnion" >
+        insert into img_image values(null,null,null,null,#{uri},null,#{pro_id}
+                                       ,"pro",null,null,null,null,null,null,null,null)
+    </insert>
+
+    <delete id="deleteByProId" parameterType="java.lang.String">
+        delete from img_image where entity_id = #{entity_id} and entity_cd = "pro"
+    </delete>
+
+    <select id="searchBrdImg" parameterType="int" resultType="ImgImage">
+        select * from img_image where entity_id = #{brd_id} and entity_cd = 'brd'
+    </select>
+
+    <insert id="addBrdImg">
+        insert into img_image values (null,null,null,null,#{uri},null,#{brd_id},'brd',1,null,null,null,null,null,null,null)
+    </insert>
+
+    <update id="updateBrdImg">
+        update img_image set uri = #{uri} where entity_id = #{brd_id} and entity_cd = 'brd'
+    </update>
+
+    <delete id="deleteBrdImg" parameterType="int">
+        delete from img_image where entity_id = #{brd_id} and entity_cd = 'brd'
+    </delete>
+
+</mapper>

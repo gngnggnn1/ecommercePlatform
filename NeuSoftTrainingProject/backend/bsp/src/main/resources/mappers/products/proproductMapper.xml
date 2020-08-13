@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.mvoproduct.mapper.ProProductMapper">
+
+    <select id="searchProduct" parameterType="int" resultType="ProProduct">
+        select * from pro_product where man_id = #{man_id} and sts_cd != 'D'
+    </select>
+
+    <select id="searchByProId" parameterType="int" resultType="ProProduct">
+        select * from pro_product where pro_id = #{pro_id}
+    </select>
+
+    <update id="updateDeletePro" parameterType="int">
+        update pro_product set sts_cd = 'D' where pro_id = #{pro_id}
+    </update>
+
+    <update id="updateAIPro">
+        update pro_product set sts_cd = #{sts_cd} where pro_id = #{pro_id}
+    </update>
+
+    <update id="updateByProId">
+        update pro_product set title = #{title}
+        where pro_id = #{pro_id}
+    </update>
+
+    <update id="updateByPro_id">
+        update pro_product set title = #{title}, sku_cd=#{sku_cd}, upc= #{upc}, ean=#{ean}, model=#{model}, warranty_day=#{warranty_day},
+        retail_price = #{retail_price}
+        where pro_id = #{pro_id}
+    </update>
+
+    <insert id="insertByPro_id" >
+        insert into pro_product values(null,#{sku_cd},null,#{man_id}
+                                                     ,#{title},#{upc},#{ean},#{model},#{warranty_day},#{retail_price},
+                                       null,null,null,null,null,null,"A",null,null,null,null,null,null)
+    </insert>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+      select max(pro_id) from pro_product
+    </select>
+
+
+</mapper>

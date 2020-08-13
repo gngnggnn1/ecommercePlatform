@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.store.mapper.StoreMapper">
+
+    <!--    <select id="insert" parameterType="User">-->
+    <!--        select * from user where t_id = #{tid} and t_password = #{tpassword}-->
+    <!--    </select>-->
+
+    <insert id = "addNewStore" parameterType="com.neusoft.bsp.store.entity.Store">
+        insert into str_store (DSR_ID, PLATAEFORM_TYPE, STORE_NAME, STORE_STS_CD, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, STS_CD)
+        values (#{DSR_ID}, #{PLATAEFORM_TYPE}, #{STORE_NAME}, 2, #{DSR_ID}, CURRENT_TIMESTAMP,#{DSR_ID}, 1)
+    </insert>
+
+    <select id="getAmazonStore" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STORE_NAME from str_store where DSR_ID = #{DSR_ID} and PLATAEFORM_TYPE = 1
+    </select>
+
+    <select id="getEbayStore" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STORE_NAME from str_store where DSR_ID = #{DSR_ID} and PLATAEFORM_TYPE = 2
+    </select>
+
+    <select id="getAmazonStoreID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STR_ID from str_store where STORE_NAME = #{STORE_NAME} and PLATAEFORM_TYPE = 1
+    </select>
+
+    <select id="getEbayStoreID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select STR_ID from str_store where STORE_NAME = #{STORE_NAME} and PLATAEFORM_TYPE = 2
+    </select>
+</mapper>

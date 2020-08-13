@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.wallet.mapper.WaaMapper">
+
+    <select id="searchWaaByName" parameterType="java.lang.String" resultType="Waa">
+        select * from waa_wallet_account where account_name = #{account_name}
+    </select>
+
+    <insert id="insertWaa" parameterType="Waa">
+        insert into waa_wallet_account values (null, #{account_name},#{email},#{password},#{active_time},
+                                               #{is_active},#{status},#{create_by},#{create_time},
+                                               #{last_update_by},#{last_update_time},#{account_type},#{hold_order_time},
+                                               #{auto_pay_status})
+    </insert>
+
+    <select id="searchAuthority" parameterType="Waa" resultType="int">
+        select count(*) from waa_wallet_account where (password = #{password} and email = #{email}) ||
+                                                      (password = #{password} and account_name = #{account_name})
+    </select>
+
+</mapper>

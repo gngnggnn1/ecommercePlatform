@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.mvoinfo.mapper.BrdBrandMapper">
+
+    <select id="getAllBrand" parameterType="int" resultType="BrdBrand">
+        select * from brd_brand where man_id = #{man_id}
+    </select>
+
+    <insert id="insertBrand" parameterType="BrdBrand">
+        insert into brd_brand values(null ,#{man_id},#{name_en},#{name_cn},#{created_by},#{creation_date},
+                                     #{last_update_by},#{last_update_date},#{call_cnt},#{remark},#{sts_cd})
+    </insert>
+
+    <delete id="deleteBrand" parameterType="int">
+        delete from brd_brand where brd_id = #{brd_id}
+    </delete>
+
+    <update id="updateBrand" parameterType="BrdBrand">
+        update brd_brand set man_id = #{man_id},name_en = #{name_en},name_cn = #{name_cn},created_by = #{created_by},
+                             creation_date = #{creation_date},last_update_by = #{last_update_by},
+                             last_update_date = #{last_update_date},call_cnt = #{call_cnt},remark = #{remark},
+                             sts_cd = #{sts_cd} where brd_id = #{brd_id}
+    </update>
+
+    <select id="searchLastedId" resultType="int">
+        select max(brd_id) from brd_brand
+    </select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.bsp.productDetail.mapper.ProductDetailMapper">
+
+    <select id="getProductID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select PRO_ID from pro_product1 where TITLE = #{TITLE}
+    </select>
+
+    <select id="getProductBrandID" parameterType="java.lang.String" resultType="java.lang.String" >
+        select BRD_ID from pro_product1 where TITLE = #{TITLE}
+    </select>
+
+    <select id="getProductBrandName" parameterType="java.lang.String" resultType="java.lang.String" >
+        select NAME_CN from brd_brand where BRD_ID = #{BRD_ID}
+    </select>
+
+    <select id="getProductPrice" parameterType="java.lang.String" resultType="java.lang.String" >
+        select RETAIL_PRICE from pro_product1 where TITLE = #{TITLE}
+    </select>
+
+    <select id="getProductSku" parameterType="java.lang.String" resultType="java.lang.String" >
+        select SKU_CD from pro_product1 where TITLE = #{TITLE}
+    </select>
+
+    <select id="getProductDescription" parameterType="java.lang.String" resultType="java.lang.String" >
+        select DESCRITION from pdn_product_descrition1 where PRO_ID = #{PRO_ID}
+    </select>
+
+    <select id="getProductImgUrl" parameterType="java.lang.String" resultType="java.lang.String" >
+        select URL from img_image1 where ENTITY_ID = #{PRO_ID} and ENTITY_CD = "pro_product"
+    </select>
+
+    <insert id = "addToWishList" parameterType="java.lang.String">
+        insert into wit_wishlist (DSR_ID, PRO_ID, CREATED_BY, LAST_UPDATE_DATE)
+        values (#{DSR_ID}, #{PRO_ID}, #{DSR_ID}, CURRENT_TIMESTAMP)
+    </insert>
+
+    <select id="checkWishList" parameterType="java.lang.String" resultType="java.lang.Integer" >
+        select count(*) from wit_wishlist where DSR_ID = #{DSR_ID} and PRO_ID = #{PRO_ID}
+    </select>
+
+    <insert id = "addToStore" parameterType="java.lang.String">
+        insert into sdi_store_dropship_item (PRO_ID, STR_ID, DROPSHIP_PRICE, DROPSHIP_STATUS, CREATION_DATE)
+        values (#{PRO_ID}, #{STR_ID}, #{RETAIL_PRICE}, 1, CURRENT_TIMESTAMP)
+    </insert>
+
+</mapper>

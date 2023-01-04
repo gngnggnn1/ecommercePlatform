@@ -1,27 +1,28 @@
 # ecommercePlatform
 
-东软跨境电商借卖平台
+An e-commerce platform implemented all the functions required by OEM companies from raw material purchase to export sales
 
-前端采用Vue.js
+Frontend: Vue.js
 
-后端采用Spring Mybatis
+Backend: Spring Mybatis 
 
-安装配置：
+Authentication and access-control: Spring Security 
 
-前端：
+Database: MySQL
 
-用cmd打开前端文件夹，运行npm install，
+SQL mapper framework: MyBatis
 
-然后npm run dev
+Develop Tool: IntelliJ IDEA + Navicat + HBuilderX
 
-前端启动成功。
+How to deploy：
 
-后端：
+Frontend：
 
-导入数据库，
+Open frontend folder in terminal，run 'npm install'，then 'npm run dev'
 
-然后使用IDEA导入后端
 
-修改数据库配置文件
+Backend：
 
-启动后端
+Import 'bsp1.sql' with Navicat，
+
+Import 'backend' folder in IDEA
